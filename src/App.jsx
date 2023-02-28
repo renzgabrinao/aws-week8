@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 
 // layout
 import Header from "./layout/Header";
+import Footer from "./layout/Footer";
 
 // pages
 import NoPage from "./NoPage";
@@ -97,19 +98,22 @@ export default function App() {
 
   return (
     <UserContext.Provider value={{user, setUser}}>
-      <div className="h-screen">
+      <div>
         <Header/>
-        <Routes>
-          <Route path="/" element={<Landing/>}/>
-          <Route path="login" element={<LoginForm  onSubmit={handleLogin} setErrorMsg={setErrorMsg}/>}/>
-          <Route path="signup" element={<SignupForm onSubmit={handleSignup} setErrorMsg={setErrorMsg}/>}/>
-          <Route path="confirm" element={<ConfirmForm onSubmit={handleConfirm} setErrorMsg={setErrorMsg}/>}/>
-          <Route path="forgot" element={<ForgotPassword onSubmit={handleForgotPassword} setErrorMsg={setErrorMsg}/>}/>
-          <Route path="reset" element={<ResetPasswordForm onSubmit={handleResetPassword} setErrorMsg={setErrorMsg}/>}/>
-          <Route path="home" element={<Secure/>}/>
-          <Route path="*" element={<NoPage/>}/>
-        </Routes>
-        { errorMsg && <div className="text-red-600 text-sm text-center pl-2 mt-1">{errorMsg}</div> }
+        <div className="min-h-screen bg-slate-300">
+          <Routes>
+            <Route path="/" element={<Landing/>}/>
+            <Route path="login" element={<LoginForm  onSubmit={handleLogin} setErrorMsg={setErrorMsg}/>}/>
+            <Route path="signup" element={<SignupForm onSubmit={handleSignup} setErrorMsg={setErrorMsg}/>}/>
+            <Route path="confirm" element={<ConfirmForm onSubmit={handleConfirm} setErrorMsg={setErrorMsg}/>}/>
+            <Route path="forgot" element={<ForgotPassword onSubmit={handleForgotPassword} setErrorMsg={setErrorMsg}/>}/>
+            <Route path="reset" element={<ResetPasswordForm onSubmit={handleResetPassword} setErrorMsg={setErrorMsg}/>}/>
+            <Route path="home" element={<Secure/>}/>
+            <Route path="*" element={<NoPage/>}/>
+          </Routes>
+          { errorMsg && <div className="text-red-600 text-sm text-center pl-2 mt-1">{errorMsg}</div> }
+        </div>
+        <Footer />
       </div>
     </UserContext.Provider>
   )

@@ -18,9 +18,8 @@ export default function Header() {
     navigate("/");
   } 
 
-
   return (
-    <nav className="h-12 flex flex-row justify-between items-center px-9">
+    <nav className="h-12 flex flex-row justify-between items-center px-9 bg-slate-300">
       <div className="hover:cursor-pointer">
         { user ?
           <>
